@@ -1,9 +1,7 @@
 document.querySelector("#getHelp")
     .addEventListener('click', () => {
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, (tabs) => {
+        document.getElementById("results").innerHTML = "";
+        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
             chrome.tabs.sendMessage(
                 tabs[0]?.id,
                 { text: "getHelp" }
